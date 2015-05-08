@@ -1,4 +1,6 @@
 class Library
+  attr_reader :books, :orders, :readers, :authors
+
 	def initialize(books, orders, readers, authors)
 		@books, @orders, @readers, @authors = books, orders, readers, authors
   end
@@ -15,12 +17,23 @@ class Library
 
   end
 
-  def saveLib
-
+  def saveLib(file = 'library.txt')
+    dump = Marshal.dump(self)
+    if File.write(file, dump)
+      puts "Data saved"
+    else
+      puts "Errors in saving"
+    end
   end
 
-  def loadLib
-
+  def self.loadLib(file = 'library.txt')
+    if File.exists?(file)
+      puts "Loading done"
+      Marshal.load(File.open(file))
+    else
+      puts "File not found - new library created"
+      self.new(nil, nil, nil,nil)
+    end
   end
 
 end

@@ -21,6 +21,7 @@ require './reader'
 require './book'
 require './order'
 require './library'
+
 readers = [reader1 = Reader.new('Вася', 'vasia@gmail.com', 'Бердянск', 'Потоцкого', '22'),
            reader2 = Reader.new('Петя', 'petia@gmail.com', 'Бердянск', 'Потоцкого', '22'),
            reader3 = Reader.new('Гоги', 'gogi@gmail.com', 'Бердянск', 'Потоцкого', '22')]
@@ -54,4 +55,10 @@ orders = [order1 = Order.new(boook1, reader1),
 
 lib = Library.new(books, orders, readers, authors)
 
-puts lib.inspect
+# dump = Marshal.dump(lib)
+# newLib = Marshal.load(dump)
+
+lib.saveLib
+newLib = Library.loadLib
+
+puts newLib.inspect
