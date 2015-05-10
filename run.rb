@@ -22,6 +22,7 @@ require './book'
 require './order'
 require './library'
 
+
 readers = [reader1 = Reader.new('Вася', 'vasia@gmail.com', 'Бердянск', 'Потоцкого', '22'),
            reader2 = Reader.new('Петя', 'petia@gmail.com', 'Бердянск', 'Потоцкого', '22'),
            reader3 = Reader.new('Гоги', 'gogi@gmail.com', 'Бердянск', 'Потоцкого', '22')]
@@ -36,29 +37,29 @@ authors = [author1 = Author.new('Гомер', 'Скучный автор'),
            author8 = Author.new('Маркес', 'Отличный автор'),
            author9 = Author.new('Кортасар', 'Неизвестный автор')]
 
-books = [boook1 = Book.new(author1, 'Одиссея'),
-         boook2 = Book.new(author2, 'Приключения Оливера Твиста'),
-         boook3 = Book.new(author3, 'Гордость и предубеждение'),
-         boook4 = Book.new(author4, 'Фауст'),
-         boook5 = Book.new(author5, 'Триумфальная арка'),
-         boook6 = Book.new(author6, 'Преступление и наказание'),
-         boook7 = Book.new(author7, 'Война и мир'),
-         boook8 = Book.new(author8, 'Сто лет одиночества'),
-         boook9 = Book.new(author9, 'Игра в классики')]
+books = [book1 = Book.new(author1, 'Одиссея'),
+         book2 = Book.new(author2, 'Приключения Оливера Твиста'),
+         book3 = Book.new(author3, 'Гордость и предубеждение'),
+         book4 = Book.new(author4, 'Фауст'),
+         book5 = Book.new(author5, 'Триумфальная арка'),
+         book6 = Book.new(author6, 'Преступление и наказание'),
+         book7 = Book.new(author7, 'Война и мир'),
+         book8 = Book.new(author8, 'Сто лет одиночества'),
+         book9 = Book.new(author9, 'Игра в классики')]
 
-orders = [order1 = Order.new(boook1, reader1),
-          order1 = Order.new(boook2, reader1),
-          order1 = Order.new(boook3, reader1),
-          order1 = Order.new(boook4, reader2),
-          order1 = Order.new(boook5, reader2),
-          order1 = Order.new(boook6, reader3)]
+orders = [order1 = Order.new(book1, reader1),
+          order2 = Order.new(book2, reader1),
+          order3 = Order.new(book3, reader1),
+          order4 = Order.new(book4, reader2),
+          order5 = Order.new(book5, reader2),
+          order6 = Order.new(book6, reader3),
+          order7 = Order.new(book1, reader1)]
 
 lib = Library.new(books, orders, readers, authors)
 
 # dump = Marshal.dump(lib)
 # newLib = Marshal.load(dump)
 
-lib.saveLib
-newLib = Library.loadLib
-
-puts newLib.inspect
+#puts lib.who_often_takes_the_book(book1)
+#puts lib.most_popular_book
+puts lib.people_ordered_most_three_popular_books
